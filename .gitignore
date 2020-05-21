@@ -1,0 +1,72 @@
+# Visual studio User-specific files
+*.coverage
+*.coveragexml
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.[Cc]ache
+[Bb]uild[Ll]og.*
+**/launchSettings.json
+
+**/dist
+**/build
+**/proto_build
+**/obj/
+**/bin/
+**/.nuget/
+**/.vs/
+**/packages/
+**/[Tt]est[Rr]esult*/
+
+# Git generated files
+*.orig
+
+# ReSharper is a .NET coding add-in
+**/_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# TeamCity is a build add-in
+**/_TeamCity*
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+
+# JetBrains
+**/.idea/
+
+# Python
+*.pyc
+*.egg-info
+.eggs
+/**/*.ncrunchsolution
+/**/*/nCrunchTemp*
+
+*.argr
+
+\.vscode/
+TestResults.xml
+/Installer/build
+/Installer/temp/
+/junit.nuget/
+
+# Xcd generated files
+*.db
+/**/*.ncrunch*
+/**/Data/Temp/
+
+*.state
+
+*.log
