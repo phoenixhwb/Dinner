@@ -7,9 +7,9 @@ namespace Dinner.Service
 {
     class MenuService : IMenuService
     {
-        public IEnumerable<Dish> GetMenu()
+        public Menu GetMenu()
         {
-            return new List<Dish>();
+            return new Menu();
         }
     }
 }

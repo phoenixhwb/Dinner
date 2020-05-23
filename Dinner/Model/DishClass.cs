@@ -8,6 +8,6 @@ namespace Dinner.Model
     {
         Soup,
         Main,
-        Vegetable
+        Vege
     }
 }

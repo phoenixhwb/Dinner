@@ -1,12 +1,15 @@
-﻿using System;
+﻿using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dinner.Model
+namespace Dinner.Model 
 {
-    class DailyDishes
+    class DailyDishes : ReactiveObject
     {
         public Day Day { get; set; }
-        public IEnumerable<Dish> Dishes { get; set; }
+
+        private IEnumerable<Dish> _dishes;
+        public IEnumerable<Dish> Dishes { get => _dishes; set => this.RaiseAndSetIfChanged(ref _dishes, value); }
     }
 }

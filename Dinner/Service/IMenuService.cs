@@ -7,6 +7,6 @@ namespace Dinner.Service
 {
     interface IMenuService
     {
-        public IEnumerable<Dish> GetMenu();
+        public Menu GetMenu();
     }
 }

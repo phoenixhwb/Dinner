@@ -9,5 +9,15 @@ namespace Dinner.Model
         public string Name { get; set; }
         public DishClass Class { get; set; }
         public int Heavy { get; set; }
+        public bool IsChecked { get; set; }
+        public Dish()
+        {
+            IsChecked = false;
+        }
+
     }
+
+    class Soup : Dish { }
+    class Main : Dish { }
+    class Vege : Dish { }
 }
