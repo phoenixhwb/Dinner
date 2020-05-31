@@ -5,6 +5,7 @@ using System.Text;
 using Dinner.Model;
 using Dinner.Service;
 using ReactiveUI;
+using System.Reactive;
 
 namespace Dinner.ViewModel
 {
@@ -14,21 +15,16 @@ namespace Dinner.ViewModel
         public MainWindowViewModel()
         {
             dishesGenerator = new DishesGenerator(new FakeMenuService());
-            Week = dishesGenerator.GenerateWeekDishes();
-            foreach(var day in Week.Days)
+            GenerateCommand = ReactiveCommand.Create(() =>
             {
-                Console.WriteLine("Day {0} :", day.Day);
-                foreach(var dish in day.Dishes)
-                {
-                    Console.WriteLine("    Name:{0}  Class:{1}  Heavy:{2}", dish.Name, dish.Class, dish.Heavy);
-                }
-            }
+                Week = dishesGenerator.GenerateWeekDishes();
+            });
         }
 
 
         private WeekDishes _week;
         public WeekDishes Week { get => _week; set => this.RaiseAndSetIfChanged(ref _week, value); }
-            
 
+        public ReactiveCommand<Unit, Unit> GenerateCommand { get; set; }
     }
 }
