@@ -7,9 +7,9 @@ namespace Dinner.Model
 {
     class Menu
     {
-        public IEnumerable<Dish> Soup { get; set; }
-        public IEnumerable<Dish> Main { get; set; }
-        public IEnumerable<Dish> Vege { get; set; }
+        public List<Dish> Soup { get; set; }
+        public List<Dish> Main { get; set; }
+        public List<Dish> Vege { get; set; }
         public bool IsMainAllChecked { get => Main.All(d => d.IsChecked); }
         public bool IsAll2PointDish { get => Main.Where(d => !d.IsChecked).All(d => d.Heavy == 2); }
         public void MainReset()

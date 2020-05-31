@@ -23,9 +23,9 @@ namespace Dinner.Service
                 conn.Open();
                 CurrentMenu = new Menu
                 {
-                    Main = ToDomain(ReadMenu(conn, DishClass.Main)),
-                    Soup = ToDomain(ReadMenu(conn, DishClass.Soup)),
-                    Vege = ToDomain(ReadMenu(conn, DishClass.Vege)),
+                    Main = ToDomain(ReadMenu(conn, DishClass.主菜)),
+                    Soup = ToDomain(ReadMenu(conn, DishClass.汤)),
+                    Vege = ToDomain(ReadMenu(conn, DishClass.蔬菜)),
                 };
             }
         }
@@ -36,8 +36,9 @@ namespace Dinner.Service
 
         private DataTable ReadMenu(OleDbConnection conn, DishClass dishClass)
         {
+            var num = (int)dishClass;
             DataTable sheetsName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" });
-            string sheet = sheetsName.Rows[0][2].ToString();
+            string sheet = sheetsName.Rows[num][2].ToString();
             string sql = string.Format("SELECT * FROM [{0}]", sheet);
 
             OleDbDataAdapter ada = new OleDbDataAdapter(sql, connstring);
@@ -45,13 +46,14 @@ namespace Dinner.Service
             ada.Fill(set);
             return set.Tables[0];
         }
-        private IEnumerable<Dish> ToDomain(DataTable ds)
+        private List<Dish> ToDomain(DataTable ds)
         {
             var a = ds.AsEnumerable();
             return
                 a
                 .Skip(1)
-                .Select(x => ToDomain(x));
+                .Select(x => ToDomain(x))
+                .ToList();
         }
         private Dish ToDomain(DataRow row)
         {
@@ -66,11 +68,11 @@ namespace Dinner.Service
         {
             switch (ds)
             {
-                case "Main": return DishClass.Main;
-                case "Soup": return DishClass.Soup;
-                case "Vege": return DishClass.Vege;
+                case "主菜": return DishClass.主菜;
+                case "汤": return DishClass.汤;
+                case "蔬菜": return DishClass.蔬菜;
             }
-            return DishClass.Main;
+            return DishClass.主菜;
         }
     }
 }

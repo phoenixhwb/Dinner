@@ -14,7 +14,7 @@ namespace Dinner.ViewModel
         private DishesGenerator dishesGenerator;
         public MainWindowViewModel()
         {
-            dishesGenerator = new DishesGenerator(new FakeMenuService());
+            dishesGenerator = new DishesGenerator(new MenuService());
             GenerateCommand = ReactiveCommand.Create(() =>
             {
                 Week = dishesGenerator.GenerateWeekDishes();

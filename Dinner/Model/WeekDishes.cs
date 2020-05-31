@@ -9,7 +9,7 @@ namespace Dinner.Model
     {
         public int Index { get; set; }
 
-        private IEnumerable<DailyDishes> _days;
-        public IEnumerable<DailyDishes> Days { get => _days; set => this.RaiseAndSetIfChanged(ref _days, value); }
+        private List<DailyDishes> _days;
+        public List<DailyDishes> Days { get => _days; set => this.RaiseAndSetIfChanged(ref _days, value); }
     }
 }

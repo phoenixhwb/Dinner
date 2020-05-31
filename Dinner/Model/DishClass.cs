@@ -6,8 +6,8 @@ namespace Dinner.Model
 {
     enum DishClass
     {
-        Main,
-        Soup,
-        Vege
+        主菜,
+        汤,
+        蔬菜
     }
 }

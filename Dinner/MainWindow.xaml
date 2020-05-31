@@ -12,27 +12,23 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding Week.Days}" Grid.Column="0">
+        <ListView ItemsSource="{Binding Week.Days}" VerticalAlignment="Top">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
+                    <StackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="100" Height="200" VerticalAlignment="Top">
-                        <Label Content="{Binding Day}" VerticalAlignment="Top"/>
+                    <StackPanel Orientation="Vertical" Width="150">
+                        <Label Content="{Binding Day}"/>
                         <ListView ItemsSource="{Binding Dishes}">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel VerticalAlignment="Top"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" >
-                                        <Label Content="{Binding Name}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding Class}"/>
                                         <Label Content="{Binding Heavy}"/>
+                                        <Label Content="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
