@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Dinner.Model;
 using Dinner.Service;
@@ -13,16 +14,17 @@ namespace Dinner.ViewModel
         private DishesGenerator dishesGenerator;
         public MainWindowViewModel()
         {
-            dishesGenerator = new DishesGenerator(new FakeMenuService());
+            dishesGenerator = new DishesGenerator(new MenuService());
             Week = dishesGenerator.GenerateWeekDishes();
-            foreach(var day in Week.Days)
+            foreach (var day in Week.Days)
             {
                 Console.WriteLine("Day {0} :", day.Day);
-                foreach(var dish in day.Dishes)
+                foreach (var dish in day.Dishes)
                 {
                     Console.WriteLine("    Name:{0}  Class:{1}  Heavy:{2}", dish.Name, dish.Class, dish.Heavy);
                 }
             }
+
         }
 
 

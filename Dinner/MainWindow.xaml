@@ -8,10 +8,19 @@
         Title="MainWindow" Height="450" Width="800"
         >
     <Grid>
-        <ListView ItemsSource="{Binding Week.Days}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Week.Days}" VerticalAlignment="Top">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="100">
+                    <StackPanel Orientation="Vertical" Width="150">
                         <Label Content="{Binding Day}"/>
                         <ListView ItemsSource="{Binding Dishes}">
                             <ListView.ItemTemplate>
