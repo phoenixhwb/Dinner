@@ -20,11 +20,11 @@ namespace Dinner.Service
             s_menu.Reset();
             var weekDays = new List<Day>
             {
-                Day.Monday,
-                Day.Tuesday,
-                Day.Wednesday,
-                Day.Thuesday,
-                Day.Friday
+                Day.星期一,
+                Day.星期二,
+                Day.星期三,
+                Day.星期四,
+                Day.星期五
             };
             var daysDishes =
                 weekDays

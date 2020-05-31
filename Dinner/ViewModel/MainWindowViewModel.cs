@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Dinner.Model;
 using Dinner.Service;
 using ReactiveUI;
+using System.Reactive;
 
 namespace Dinner.ViewModel
 {
@@ -14,23 +14,17 @@ namespace Dinner.ViewModel
         private DishesGenerator dishesGenerator;
         public MainWindowViewModel()
         {
-            dishesGenerator = new DishesGenerator(new MenuService());
-            Week = dishesGenerator.GenerateWeekDishes();
-            foreach (var day in Week.Days)
+            dishesGenerator = new DishesGenerator(new FakeMenuService());
+            GenerateCommand = ReactiveCommand.Create(() =>
             {
-                Console.WriteLine("Day {0} :", day.Day);
-                foreach (var dish in day.Dishes)
-                {
-                    Console.WriteLine("    Name:{0}  Class:{1}  Heavy:{2}", dish.Name, dish.Class, dish.Heavy);
-                }
-            }
-
+                Week = dishesGenerator.GenerateWeekDishes();
+            });
         }
 
 
         private WeekDishes _week;
         public WeekDishes Week { get => _week; set => this.RaiseAndSetIfChanged(ref _week, value); }
-            
 
+        public ReactiveCommand<Unit, Unit> GenerateCommand { get; set; }
     }
 }

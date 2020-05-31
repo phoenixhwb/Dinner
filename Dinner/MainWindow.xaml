@@ -12,21 +12,26 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding Week.Days}" VerticalAlignment="Top">
+        <ListView ItemsSource="{Binding Week.Days}" Grid.Column="0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="150">
-                        <Label Content="{Binding Day}"/>
+                    <StackPanel Orientation="Vertical" Width="100" Height="200" VerticalAlignment="Top">
+                        <Label Content="{Binding Day}" VerticalAlignment="Top"/>
                         <ListView ItemsSource="{Binding Dishes}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel VerticalAlignment="Top"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding Name}"/>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Label Content="{Binding Name}" />
                                         <Label Content="{Binding Heavy}"/>
                                     </StackPanel>
                                 </DataTemplate>
@@ -36,5 +41,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Column="1">
+            <Button Height="60" Content="生成菜单" Command="{Binding GenerateCommand}" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>
